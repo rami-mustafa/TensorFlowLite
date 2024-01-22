@@ -1,4 +1,4 @@
-/*
+ 
 import UIKit
 import AVFoundation
 import VideoToolbox
@@ -164,73 +164,3 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
 
 
-*/
-
-
-
-import UIKit
-import AVFoundation
-
-class CameraViewController: UIViewController, CameraManagerDelegate {
-    var cameraManager: CameraManager!
-    var modelInterpreter: ModelInterpreter!
-    var previewLayer: AVCaptureVideoPreviewLayer!
-    var resultsLabel: UILabel!
-
-    
-    let inputWidth = 300  
-    let inputHeight = 300
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        cameraManager = CameraManager()
-        cameraManager.delegate = self
-        modelInterpreter = ModelInterpreter()
-
-        setupPreviewLayer()
-        setupResultsLabel()
-
-        cameraManager.startSession()
-    }
-
-    func setupPreviewLayer() {
-        previewLayer = AVCaptureVideoPreviewLayer(session: cameraManager.captureSession)
-        previewLayer.frame = view.bounds
-        previewLayer.videoGravity = .resizeAspectFill
-        view.layer.addSublayer(previewLayer)
-    }
-
-    func setupResultsLabel() {
-        resultsLabel = UILabel()
-        resultsLabel.numberOfLines = 0
-        resultsLabel.backgroundColor = .white
-        resultsLabel.textColor = .black
-        view.addSubview(resultsLabel)
-        resultsLabel.frame = CGRect(x: 0, y: view.frame.size.height - 100, width: view.frame.size.width, height: 100)
-    }
-
-    func didCapture(sampleBuffer: CMSampleBuffer) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        let results = modelInterpreter.runModel(on: pixelBuffer)
-        updateUIWithResults(results)
-    }
-
-    private func updateUIWithResults(_ results: [String]) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-
-            // Eğer sonuçlar boşsa, kullanıcıya bir mesaj göster
-            if results.isEmpty {
-                self.resultsLabel.text = "Tanınan nesne bulunamadı."
-            } else {
-                // Sonuçları birleştir ve label'da göster
-                self.resultsLabel.text = results.joined(separator: "\n")
-            }
-
-            // Gerekirse burada ek UI güncellemeleri yapabilirsiniz
-            // Örneğin, sonuçlara göre bazı UI elementlerini gizleme veya gösterme
-        }
-    }
-
-}

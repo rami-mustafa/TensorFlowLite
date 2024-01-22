@@ -15,8 +15,6 @@
 		389120172B57B7CB001927B6 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389120162B57B7CB001927B6 /* CustomButton.swift */; };
 		38B210482B5C252A0038AA1A /* Pods_CaseTFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C997E5BD9814453CACC019EF /* Pods_CaseTFlow.framework */; };
 		38B210492B5C252A0038AA1A /* Pods_CaseTFlow.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C997E5BD9814453CACC019EF /* Pods_CaseTFlow.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		38CDE7C92B5E922400286F92 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CDE7C82B5E922400286F92 /* CameraManager.swift */; };
-		38CDE7CB2B5E923B00286F92 /* ModelInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CDE7CA2B5E923B00286F92 /* ModelInterpreter.swift */; };
 		38D08CA52B5C641D002F27C4 /* PixelBufferExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D08CA42B5C641D002F27C4 /* PixelBufferExtensions.swift */; };
 		38D08CA72B5C655B002F27C4 /* labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 38D08CA62B5C655B002F27C4 /* labels.txt */; };
 		38E88FFE2B56975B00BDDC31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E88FFD2B56975B00BDDC31 /* AppDelegate.swift */; };
@@ -49,8 +47,6 @@
 		389120122B57B7A9001927B6 /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		389120142B57B7BA001927B6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		389120162B57B7CB001927B6 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		38CDE7C82B5E922400286F92 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
-		38CDE7CA2B5E923B00286F92 /* ModelInterpreter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInterpreter.swift; sourceTree = "<group>"; };
 		38D08CA42B5C641D002F27C4 /* PixelBufferExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelBufferExtensions.swift; sourceTree = SOURCE_ROOT; };
 		38D08CA62B5C655B002F27C4 /* labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
 		38E88FFA2B56975B00BDDC31 /* CaseTFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaseTFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,15 +112,6 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
-		38CDE7C72B5E920D00286F92 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				38CDE7C82B5E922400286F92 /* CameraManager.swift */,
-				38CDE7CA2B5E923B00286F92 /* ModelInterpreter.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		38E88FF12B56975B00BDDC31 = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +136,6 @@
 				3891200A2B57B58C001927B6 /* APIService.swift */,
 				38D08CA42B5C641D002F27C4 /* PixelBufferExtensions.swift */,
 				38D08CA62B5C655B002F27C4 /* labels.txt */,
-				38CDE7C72B5E920D00286F92 /* Model */,
 				389120192B57B800001927B6 /* Controllers */,
 				389120112B57B79A001927B6 /* View */,
 				3891201A2B57B813001927B6 /* Supporting */,
@@ -288,9 +274,7 @@
 				38E890022B56975B00BDDC31 /* CameraViewController.swift in Sources */,
 				389120132B57B7A9001927B6 /* AuthHeaderView.swift in Sources */,
 				38E88FFE2B56975B00BDDC31 /* AppDelegate.swift in Sources */,
-				38CDE7C92B5E922400286F92 /* CameraManager.swift in Sources */,
 				389120172B57B7CB001927B6 /* CustomButton.swift in Sources */,
-				38CDE7CB2B5E923B00286F92 /* ModelInterpreter.swift in Sources */,
 				38D08CA52B5C641D002F27C4 /* PixelBufferExtensions.swift in Sources */,
 				3891200B2B57B58C001927B6 /* APIService.swift in Sources */,
 				38E890002B56975B00BDDC31 /* SceneDelegate.swift in Sources */,
