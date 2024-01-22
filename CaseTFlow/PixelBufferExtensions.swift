@@ -186,3 +186,43 @@ extension CVPixelBuffer {
   }
 
 }
+
+
+
+extension CameraViewController {
+ 
+    func resizeImage(buffer: CVPixelBuffer, width: Int, height: Int) -> Data? {
+        CVPixelBufferLockBaseAddress(buffer, .readOnly)
+        defer { CVPixelBufferUnlockBaseAddress(buffer, .readOnly) }
+
+        guard let sourceData = CVPixelBufferGetBaseAddress(buffer) else {
+            return nil
+        }
+
+        let sourceWidth = CVPixelBufferGetWidth(buffer)
+        let sourceHeight = CVPixelBufferGetHeight(buffer)
+        let sourceBytesPerRow = CVPixelBufferGetBytesPerRow(buffer)
+
+        var sourceBuffer = vImage_Buffer(data: sourceData, height: vImagePixelCount(sourceHeight), width: vImagePixelCount(sourceWidth), rowBytes: sourceBytesPerRow)
+
+        guard let destinationData = malloc(height * width * 4) else {
+            print("Error: out of memory")
+            return nil
+        }
+
+        defer { free(destinationData) }
+
+        var destinationBuffer = vImage_Buffer(data: destinationData, height: vImagePixelCount(height), width: vImagePixelCount(width), rowBytes: width * 4)
+
+        let error = vImageScale_ARGB8888(&sourceBuffer, &destinationBuffer, nil, vImage_Flags(kvImageHighQualityResampling))
+
+        guard error == kvImageNoError else {
+            print("Error in vImageScale_ARGB8888: \(error)")
+            return nil
+        }
+
+        let byteData = Data(bytes: destinationBuffer.data, count: height * width * 4)
+        return byteData
+    }
+
+}
