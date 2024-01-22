@@ -1,0 +1,6 @@
+framework module Pods_CaseTFlow {
+  umbrella header "Pods-CaseTFlow-umbrella.h"
+
+  export *
+  module * { export * }
+}
